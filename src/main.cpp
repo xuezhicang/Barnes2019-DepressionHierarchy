@@ -54,9 +54,9 @@ int main(int argc, char **argv){
   //GraphViz dot-style output for drawing depression hierarchy graphs.
   {
     std::ofstream fgraph(out_name+"-graph.csv");
-    fgraph<<"parent,child,oceanlink\n";
+    fgraph<<"parent,child,dep volume,outlet elev,out_cell coor,oceanlink\n";
     for(unsigned int i=1;i<deps.size();i++){
-      fgraph<<deps[i].parent<<","<<i<<",";
+      fgraph<<deps[i].parent<<","<<i<<","<< deps[i].dep_vol<<","<<deps[i].out_elev <<","<<deps[i].out_cell <<","; 
       //Is it an ocean link?
       fgraph<<(deps[i].parent!=dh::NO_VALUE && (deps[i].parent==dh::OCEAN || !(deps[deps[i].parent].lchild==i || deps[deps[i].parent].rchild==i)))<<"\n";
     }
