@@ -297,8 +297,12 @@ DepressionHierarchy<elev_t> GetDepressionHierarchy(
   std::vector<flat_c_idx> ocean_seeds;
   std::vector<flat_c_idx> land_seeds;
   //Reduce reallocations by assuming 2.5% of the map is seeds
-  ocean_seeds.reserve(dem.width()*dem.height()/40);
-  land_seeds.reserve(dem.width()*dem.height()/40);
+  //ocean_seeds.reserve(dem.width()*dem.height()/40);
+  //land_seeds.reserve(dem.width()*dem.height()/40);
+
+
+  ocean_seeds.reserve(static_cast<long long>(dem.width()) * dem.height() / 40);
+  land_seeds.reserve(static_cast<long long>(dem.width()) * dem.height() / 40);
 
   #pragma omp declare reduction(merge : std::vector<flat_c_idx> : omp_out.insert(omp_out.end(), omp_in.begin(), omp_in.end()))
 
