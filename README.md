@@ -68,7 +68,9 @@ The following compilers are known to be too old: GCC5.4.0
 
 Next, be sure to acquire submodules either upon initially obtaining the repository:
 
-    git clone --recurse-submodules -j8 https://github.com/r-barnes/Barnes2019-DepressionHierarchy.git
+    📝 **Note:** This is Xuezhi's branch, so the download link is different. 
+
+    git clone --recurse-submodules -j8 https://github.com/xuezhicang/Barnes2019-DepressionHierarchy.git
 
 Or afterwards by using the following within the repository itself:
 
