@@ -32,7 +32,8 @@ int main(int argc, char **argv){
   std::cout<<"m Data width  = "<<topo.width ()<<std::endl;
   std::cout<<"m Data height = "<<topo.height()<<std::endl;
   std::cout<<"m Data cells  = "<<topo.numDataCells()<<std::endl;
-
+  
+  timer_io.start();
   rd::Array2D<dh::dh_label_t> label   (topo.width(), topo.height(), dh::NO_DEP ); //No cells are part of a depression
   rd::Array2D<rd::flowdir_t>  flowdirs(topo.width(), topo.height(), rd::NO_FLOW); //No cells flow anywhere
 
@@ -49,7 +50,7 @@ int main(int argc, char **argv){
   //connecting them
   auto deps = dh::GetDepressionHierarchy<float,rd::Topology::D8>(topo, label, flowdirs);
 
-  timer_io.start();
+
 
   //GraphViz dot-style output for drawing depression hierarchy graphs.
   {
@@ -68,7 +69,7 @@ int main(int argc, char **argv){
   timer_io.stop();
 
   std::cout<<"Finished"<<std::endl;
-  std::cout<<"IO time   = "<<timer_io.accumulated()<<" s"<<std::endl;
+  std::cout<<"Total time   = "<<timer_io.accumulated()<<" s"<<std::endl;
 
   return 0;
 }
